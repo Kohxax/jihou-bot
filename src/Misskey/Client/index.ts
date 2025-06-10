@@ -11,7 +11,7 @@ export class MisskeyClient {
         });
     }
 
-    async postNote(text: String) {
-        return this.client.request<'notes/create', any>('notes/create', { text })
+    async postNote(text: string) {
+        return this.client.request('notes/create', { text });
     }
 }
