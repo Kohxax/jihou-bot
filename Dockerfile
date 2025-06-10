@@ -1,6 +1,6 @@
 # Builder
 
-FROM node:20 AS builder
+FROM node:22 AS builder
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN npx tsc
 
 #Production
 
-FROM node:20-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
