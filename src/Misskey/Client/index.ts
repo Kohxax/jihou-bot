@@ -1,6 +1,7 @@
 import * as Misskey from "misskey-js";
 
 export class MisskeyClient {
+    
     private client: Misskey.api.APIClient;
 
     constructor(origin: string, token: string) {

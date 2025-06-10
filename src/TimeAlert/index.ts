@@ -1,6 +1,6 @@
 import cron from 'node-cron';
 import dayjs from 'dayjs';
-import { MisskeyClient } from '../Misskey/index.js';
+import { MisskeyClient } from '../Misskey/Client/index.js';
 
 export class TimeAlert {
   private misskey: MisskeyClient;

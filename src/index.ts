@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { MisskeyClient } from "./Misskey/index.js";
+import { MisskeyClient } from "./Misskey/Client/index.js";
 import { TimeAlert } from "./TimeAlert/index.js";
 
 dotenv.config();
