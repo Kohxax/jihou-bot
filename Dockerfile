@@ -16,6 +16,8 @@ RUN npx tsc
 
 FROM node:22-alpine
 
+ENV TZ=Asia/Tokyo
+
 WORKDIR /app
 
 COPY package*.json ./

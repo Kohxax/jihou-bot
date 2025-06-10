@@ -15,12 +15,19 @@ MISSKEY_INSTANCE=ここにmisskeyインスタンスのURL
 MISSKEY_TOKEN=作成したアクセストークン
  ```
 
- ④下記コマンドをプロジェクトフォルダ内で実行
+④必要に応じて`Dockerfile`の
+```
+ENV TZ=Asia/Tokyo
+```
+を変更する
+
+
+ ⑤下記コマンドをプロジェクトフォルダ内で実行
  ```
  docker build -t jihou-bot .
  ```
 
- ⑤下記コマンドを実行し、コンテナを起動
+ ⑥下記コマンドを実行し、コンテナを起動
 ```
 docker run --env-file .env -d --name jihou-bot jihou-bot
 ```
