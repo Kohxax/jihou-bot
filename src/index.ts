@@ -1,26 +1,18 @@
-import * as Misskey from "misskey-js";
 import dotenv from "dotenv";
+import { MisskeyClient } from "./Misskey/index.js";
+import { TimeAlert } from "./TimeAlert/index.js";
 
 dotenv.config();
 
-const instanceUrl = process.env.MISSKEY_INSTANCE;
-const accessToken = process.env.MISSKEY_TOKEN;
+const origin = process.env.MISSKEY_INSTANCE;
+const token = process.env.MISSKEY_TOKEN;
 
 //.envにMISSKEY_INSTANCEとMISSKEY_TOKENが設定されているか確認
-if (!instanceUrl || !accessToken) {
+if (!origin || !token) {
   throw new Error("MISSKEY_INSTANCEとMISSKEY_TOKENが.envに設定されていません");
 }
 
-// APIクライアントの初期化
-const client = new Misskey.api.APIClient({
-  origin: instanceUrl,
-  credential: accessToken
-});
+const misskeyClient = new MisskeyClient(origin, token);
+const timeAlert = new TimeAlert(misskeyClient);
 
-client.request('notes/create', {
-  text: 'Hello, Misskey!'
-}).then(response => {
-  console.log('Note created successfully:', response);
-}).catch(error => {
-  console.error('Error creating note:', error);
-});
+timeAlert.start();
