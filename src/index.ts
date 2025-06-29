@@ -1,6 +1,8 @@
 import dotenv from "dotenv";
+import * as Misskey from "misskey-js";
 import { MisskeyClient } from "./Misskey/Client/index.js";
 import { TimeAlert } from "./TimeAlert/index.js";
+import { Followback } from "./Misskey/Follow/index.js";
 
 dotenv.config();
 
@@ -13,6 +15,9 @@ if (!origin || !token) {
 }
 
 const misskeyClient = new MisskeyClient(origin, token);
+const stream = new Misskey.Stream(origin, { token });
 const timeAlert = new TimeAlert(misskeyClient);
+const followback = new Followback(misskeyClient, stream);
 
+followback.start();
 timeAlert.start();

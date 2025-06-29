@@ -14,4 +14,8 @@ export class MisskeyClient {
     async postNote(text: string) {
         return this.client.request('notes/create', { text });
     }
+
+    async followUser(userId: string) {
+        return this.client.request('following/create', { userId });
+    }
 }
